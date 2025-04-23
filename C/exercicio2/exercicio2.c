@@ -1,17 +1,18 @@
 #include <stdio.h>
 
 int main() {
-    int num1, num2, num3;
-    printf("escreva o primeiro numero: ");
+    int num1 = 0, num2 = 0, num3 = 0;  
+    int maior = 0, menor = 0;  
+
+    printf("Escreva o primeiro numero: ");
     scanf("%d", &num1);
-    printf("escreva o segundo numero: ");
+    printf("Escreva o segundo numero: ");
     scanf("%d", &num2);
-    printf("escreva o terceiro numero: ");
+    printf("Escreva o terceiro numero: ");
     scanf("%d", &num3);
 
-    int maior = num1;
-    int menor = num1;
-
+  
+    maior = num1;  
     if (num2 > maior) {
         maior = num2;
     }
@@ -19,6 +20,8 @@ int main() {
         maior = num3;
     }
 
+   
+    menor = num1;  
     if (num2 < menor) {
         menor = num2;
     }
@@ -26,7 +29,8 @@ int main() {
         menor = num3;
     }
 
-printf("O maior numero e: %d\n", maior);
-printf("O menor numero e: %d\n", menor);
+    printf("O maior numero é: %d\n", maior);
+    printf("O menor numero é: %d\n", menor);
 
+    return 0;
 }

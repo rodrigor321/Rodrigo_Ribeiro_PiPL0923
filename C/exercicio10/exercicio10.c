@@ -3,7 +3,7 @@
 int main() {
     int nums[10];
     for(int i = 0; i < 10; i++) {
-        printf("Introduze o número nº%i: ", i);
+        printf("Escreve um número nº%i: ", i);
         scanf("%i", &nums[i]);
     }
     int par = 0, impar = 0;
