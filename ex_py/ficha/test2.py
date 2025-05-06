@@ -12,7 +12,13 @@ def adicionar_cliente(lista_clientes, id_cliente):
     endereco_cliente = input("Endereco do cliente: ")
     telefone_cliente = input("Telefone do cliente: ")
     nif_cliente = input("NIF do cliente: ")
-    valor_compra = float(input("Valor da compra: "))
+    
+    while True:
+        try:
+            valor_compra = float(input("Valor da compra: "))
+            break
+        except ValueError:
+            print("Por favor, insira um valor numerico valido para a compra.")
     
     desconto_cliente = calcular_desconto(valor_compra)
     divida_final = valor_compra - desconto_cliente
@@ -73,18 +79,23 @@ def menu():
         
         opcao = input("Escolha uma opcao: ")
         
-        if opcao == '1':
-            adicionar_cliente(lista_clientes, id_cliente)
-            id_cliente += 1  
-        elif opcao == '2':
-            listar_todos_clientes(lista_clientes)
-        elif opcao == '3':
-            id_cliente_busca = int(input("Digite o ID do cliente para busca: "))
-            buscar_cliente_por_id(lista_clientes, id_cliente_busca)
-        elif opcao == '4':
-            print("Saindo do programa...")
-            break
-        else:
-            print("Opcao invalida! Tente novamente.")
+        match opcao:
+            case '1':
+                adicionar_cliente(lista_clientes, id_cliente)
+                id_cliente += 1  
+            case '2':
+                listar_todos_clientes(lista_clientes)
+            case '3':
+                try:
+                    id_cliente_busca = int(input("Digite o ID do cliente para busca: "))
+                    buscar_cliente_por_id(lista_clientes, id_cliente_busca)
+                except ValueError:
+                    print("ID invalido! Por favor, digite um numero inteiro.")
+            case '4':
+                print("Saindo do programa...")
+                return  
+            case _:
+                print("Opcao invalida! Tente novamente.")
 
-menu()
+if __name__ == "__main__":
+    menu()

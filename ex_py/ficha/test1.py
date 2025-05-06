@@ -19,7 +19,7 @@ while contador < numero:
     i = numero - contador
     if contador % 10 == 0 and contador != 0:
         resposta = input("Deseja continuar? S ou N: ")
-        if resposta == 'N':
+        if resposta.upper() == 'N':
             break
     
     divisores = contar_divisores(i)
@@ -49,7 +49,7 @@ if operacao == ".":
     while i <= 10:
         if i % 20 == 1 and i != 1:
             resposta = input("Deseja continuar? S ou N: ")
-            if resposta == 'N':
+            if resposta.upper() == 'N':
                 break
         print(f"{numero_tab} x {i} = {numero_tab * i}")
         i += 1
@@ -57,18 +57,21 @@ else:
     numero1 = int(input("Introduza o primeiro numero: "))
     numero2 = int(input("Introduza o segundo numero: "))
     
-    if operacao == "+":
-        resultado = numero1 + numero2
-    elif operacao == "-":
-        resultado = numero1 - numero2
-    elif operacao == "*":
-        resultado = numero1 * numero2
-    elif operacao == "/":
-        if numero2 != 0:
-            resultado = numero1 / numero2
-        else:
-            print("Erro: Divisao por zero nao e permitida!")
-            resultado = None
+    match operacao:
+        case "+":
+            resultado = numero1 + numero2
+        case "-":
+            resultado = numero1 - numero2
+        case "*":
+            resultado = numero1 * numero2
+        case "/":
+            if numero2 != 0:
+                resultado = numero1 / numero2
+            else:
+                print("Erro: Divisao por zero nao e permitida!")
+                resultado = None
+        case _:
+            print("Operacao invalida!")
 
     if resultado is not None:
         print(f"{numero1} {operacao} {numero2} = {resultado}")
